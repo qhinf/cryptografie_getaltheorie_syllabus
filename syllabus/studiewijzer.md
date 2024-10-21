@@ -50,6 +50,61 @@ In de eerste zin van &sect;3.3 wordt gesuggereerd dat een monoalfabetische subst
 
 :::
 
+## Coderen
+
+*Bestudeer uit de syllabus hoofdstuk 4 op pagina 21 en 22 en maak opgaven 2 en 3.*
+
+## Getaltheorie
+
+### Priemgetallen en Euclides
+
+*Bestudeer uit de syllabus paragraaf 5.1 en 5.2 op pagina 23 t/m 28 en maak opgaven 5, 9 en 16.*
+
+:::{note}
+
+De syllabus is al een tijdje geleden geschreven. Het grootste priemgetal dat we nu kennen is $2^{82\space589\space933} − 1$. Dit is het 51e Mersenne-priemgetal, gevonden in december 2018, ook door GIMPS.
+
+:::
+
+Bij de asymmetrische cryptosystemen waar we in hoofdstuk 6 naar gaan kijken speelt de getaltheorie uit hoofdstuk 5 een belangrijke rol. Daarbij kijken we eerst naar delers en priemgetallen. Een eenvoudige manier om priemgetallen te vinden is aan de hand van de Zeef van Eratosthenes (Griekse geleerde).
+
+:::{seealso}
+Een facultatief uitstapje... Bewijs de volgende stelling:
+
+*Stelling:* Er zijn oneindig veel priemgetallen.
+:::
+
+De grootste gemene deler van twee getallen $a$ en $m$ is - zoals de term al zegt - het grootste getal dat deler is van zowel $a$ als $m$. Notatie $ggd(a,m)$. Er zijn meerdere manieren om de ggd van twee getallen te berekenen, onder andere door priemfactorontbinding en met het algoritme van Euclides.
+
+Facultatief: in de opgaven 12 en 14 kun je de methode van Euclides aantonen, dus laat je zien dat $ggd(a,m) = ggd(a,r)$ waarbij $r = \text{rest bij deling van } a \text{ door } m$.
+
+:::{exercise}
+**Facultatieve opgave**
+
+Maria heeft 42 appels, 60 peren en 90 kersen geplukt. Ze wil alle vruchten verdelen over zoveel mogelijk mensen. Iedereen moet hetzelfde krijgen. Hoeveel mensen kan Maria dan een portie geven?
+:::
+
+:::{admonition} Voorbeeld
+:class: hint
+
+We kunnen $ggd(60,198)$ op meerdere manieren berekenen.
+
+Een manier is om alle delers op te schrijven en dan de grootste gemeenschappelijke deler eruit te halen. Voor grote getallen is dat niet erg efficiënt.
+
+Wanneer we naar de priemfactorontbinding kijken, krijgen we $60 = 2^2 \cdot 3 \cdot 5$ en $198 = 2 \cdot 3^2 \cdot 11$. In beide ontbindingen zit één keer de factor 2 en één keer de factor 3, dus $ggd(60,198) = 2 \cdot 3 = 6$.
+
+Daarnaast kunnen we ook het algoritme van Euclides toepassen. Dat kan met berekeningen onder elkaar of in een tabel. Gezien we de tabel nog uitgebreider gaan toepassen, passen we het algoritme in een tabel toe:
+
+| $a$ | $m$ | $q$ | $r$ |
+|:---:|:---:|:---:|:---:|
+| 60  | 198 | 0   | 60  |
+| 198 | 60  | 3   | 18  |
+| 60  | 18  | 3   | 6   |
+| 18  | 6   | 3   | 0   |
+| 6   | 0   |     |     |
+
+:::
+
 ## Uitwerkingen
 
 :::{solution} ex-encryptie-conflict
