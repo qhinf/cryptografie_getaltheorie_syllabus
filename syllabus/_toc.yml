@@ -4,9 +4,6 @@
 
 format: jb-book
 root: index
-options:
-  numbered: true
 chapters:
-- file: markdown
-- file: notebooks
-- file: markdown-notebooks
+- file: studiewijzer
+- file: eindopdracht
