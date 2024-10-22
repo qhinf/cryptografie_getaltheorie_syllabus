@@ -26,7 +26,6 @@ parse:
     - dollarmath # Schrijf LaTeX formules tussen $ (inline) of $$ (blok)
     - fieldlist # Een soort tabel van eigenschappen
     - html_image # Sta <img /> elementen toe voor afbeeldingen
-    - linkify # Maak automatisch links van teksten die op een link lijken
     - replacements # Vervang (c) door een copyright symbool etc.
     - smartquotes # Vervang ' en " door echte, schuine quotes (pas op met code!)
     - substitution # Vervang {{ key }} in teksten met een waarde uit deze configuratie
