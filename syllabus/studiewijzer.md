@@ -105,13 +105,79 @@ Daarnaast kunnen we ook het algoritme van Euclides toepassen. Dat kan met bereke
 
 :::
 
+### Modulo-rekenen
+
+*Bestudeer uit de syllabus paragraaf 5.3 op pagina 28 t/m 33 en maak opgaven 18, 24, 29, 30. Maak eventueel ook opgaven 20, 22 en 23.*
+
+Bij het reduceren van een positief geheel getal modulo $m$ ga je net zo vaak $m$ van het geheel getal afhalen (bij een negatief getal ga je juist $m$ bij het getal optellen) totdat je een zo klein mogelijk positief getal overhoudt. Dit noemen we ook wel de rest na deling door $m$.
+
+Eenvoudig voorbeeld: $15 \bmod 10 = 5 \bmod 10$, je kunt namelijk één keer 10 van 15 afhalen, dus 15 is in $\mathbb{Z}_{10}$ gelijk aan 5.
+
+Met behulp van de rekenregels voor modulo-rekenen weet je hoe je met optelling en vermenigvuldiging om moet gaan. Probeer hier ook handig mee te werken zie het volgende voorbeeld en {ref}`ex-modulo-rekenregels`.
+
+:::{admonition} Voorbeeld
+:class: hint
+Bereken, zonder rekenmachine, $78 \cdot 77 \cdot 76$ in $\mathbb{Z}_{81}$.
+
+We gaan nu niet deze vermenigvuldiging uitvoeren! We bedenken even dat in $\mathbb{Z}_{81}$ geldt: $81 = 0$ en dus $78 = -3$ etc.
+
+Dus $78 \cdot 77 \cdot 76 = -3 \cdot -4 \cdot -5 = -60 = 21$. Klaar!
+:::
+
+:::{exercise}
+:label: ex-modulo-rekenregels
+{style=lower-alpha}
+1. Bereken $19 \cdot 39$ in $\mathbb{Z}_{40}$.
+2. Bereken $25 \cdot 44$ in $\mathbb{Z}_{50}$.
+3. Bereken op een handige manier $7^{11}$ in $\mathbb{Z}_{50}$.
+:::
+
+### Inverse en het uitgebreide algoritme van Euclides
+
+*Bestudeer uit de syllabus paragraaf 5.4 en 5.5 op pagina 33 t/m 40 en maak opgaven 34, 43, 46 en 48. Meer oefening nodig? Maak dan ook opgaven 44, 45 en 47.*
+
+Door het toepassen van het uitgebreide algoritme van Euclides voor de $ggd(a,m)$ kunnen we de lineaire Diophantische vergelijking $ab+mk=ggd(a,m)$ oplossen. Vervolgens kunnen we hieruit, alleen wanneer $ggd(a,m)=1$, de inverse van $a$ in $\mathbb{Z}_m$ verkrijgen.
+
+Dit kun je doen door twee extra kolommen toe te voegen aan het algoritme van Euclides welke je $b$ en $k$ noemt. Op bladzijde 37 en 38 wordt laten zien hoe die kolom nu ingevuld kan worden.
+
+Een andere manier is door 'terug te werken' zoals in opgave 42 (waarbij gebruik wordt gemaakt van de resultaten in opgave 40 en 41) gedaan wordt. Vind hierin voor jezelf de manier die het beste aansluit.
+
+*Maak van paragraaf 5.5 opgaven 49 en 50 op pagina 40.*
+
+We kunnen nu encryptiefuncties bekijken waar de inverse bij modulo-rekenen een rol speelt. In opgave 49 en 50 vind je twee voorbeelden van encryptiefuncties waarin je met de inverse gaat werken om versleutelde boodschappen te ontcijferen. Daarnaast gaat de inverse van een getal in $\mathbb{Z}_m$ nodig zijn bij het asymmetrische cryptosysteem RSA, welke in hoofdstuk 6 aan bod komt.
+
+### Euler en Fermat
+
+*Bestudeer uit de syllabus paragraaf 5.6 op pagina 40 en 41 en maak opgaven 54 en 55.*
+
+Probeer ervoor te zorgen dat je bij machtsverheffen in $\mathbb{Z}_m$ op een efficiënte manier te werk gaat, door op een handige manier de machten te herschrijven en de machtenregel toe te passen. Kijk hiervoor ook nog even terug naar {ref}`ex-modulo-rekenregels`c in deze studiewijzer.
+
+*Bestudeer uit de syllabus paragraaf 5.7 op pagina 42 t/m 45 en maak opgaven 57, 58, 59 en 60.*
+
+De Eulerindicator, die het aantal getallen $a$ aangeeft zodat $0 \le a \le m-1$ en waarvoor $a$ een inverse in $\mathbb{Z}_m$ heeft (dus waarvoor $ggd(a,m)=1$), wordt genoteerd als $\phi(m)$. De resultaten uit opgaven 57c en 58d zijn van belang om de Eulerindicator van elk getal te kunnen berekenen. De Eulerindicator gaat ook een rol spelen bij het asymmetrische cryptosysteem RSA.
+
+De stelling van Euler en de kleine stelling van Fermat kunnen helpen om grote machten efficiënter module $m$ te reduceren. Onder andere deze stellingen worden in hoofdstuk 7 'bewezen'. Mocht je geïnteresseerd zijn in de bewijzen van deze stellingen -- waar mooie wiskunde achter zit -- dan kun je je verder verdiepen in de theorie en opgaven van hoofdstuk 7.
+
+*Maak van paragraaf 5.7 opgaven 62, 63, 64 en 65.*
+
+Oefeningen waarin encryptiefuncties met module rekenen terugkomen en welke handig zijn om te oefenen zijn 62, 63, 64 en 65. Hierin zijn de laatste twee wat uitdagender, gezien in deze opdrachten de inverse weer terugkomt.
+
 ## Uitwerkingen
 
 :::{solution} ex-encryptie-conflict
+:label: sol-encryptie-conflict
 
 $E_{(2, 12)}(0) = 2 \cdot 0 + 12 = 12$ en \
 $E_{(2, 12)}(13) = 2 \cdot 13 + 12 = 26 + 12 = 0 + 12 = 12$.
 
 Dus zowel de A als de N worden versleuteld tot een M. We kunnen hier dus onmogelijk een decryptiefunctie opstellen. Ook hier komen we uitgebreid op terug.
+:::
 
+:::{solution} ex-modulo-rekenregels
+:label: sol-modulo-rekenregels
+
+{style=lower-alpha}
+1. In $\mathbb{Z}_{40}$ is $19 \cdot 39 = 19 \cdot -1 = -19 = 21$
+2. In $\mathbb{Z}_{50}$ is $25 \cdot 44 = 50 \cdot 22 = 0$
+3. In $\mathbb{Z}_{50}$ is $7^2 = 49 = -1$, dus $7^{11} = (-1)^5 \cdot 7 = -7 = 43$
 :::

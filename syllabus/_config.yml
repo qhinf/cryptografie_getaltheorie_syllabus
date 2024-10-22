@@ -31,6 +31,7 @@ parse:
     - smartquotes # Vervang ' en " door echte, schuine quotes (pas op met code!)
     - substitution # Vervang {{ key }} in teksten met een waarde uit deze configuratie
     - tasklist # Takenlijst zoals in GitHub Flavored Markdown (- [ ] Dit is een taak)
+    - attrs_block # Attributen tussen {accolades} voor blokelementen
 
 sphinx:
   # Extensions voor speciale Markdown blokken via Sphinx, bijvoorbeeld voor
