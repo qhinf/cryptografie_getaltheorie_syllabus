@@ -61,9 +61,7 @@ In de eerste zin van &sect;3.3 wordt gesuggereerd dat een monoalfabetische subst
 *Bestudeer uit de syllabus paragraaf 5.1 en 5.2 op pagina 23 t/m 28 en maak opgaven 5, 9 en 16.*
 
 :::{note}
-
 De syllabus is al een tijdje geleden geschreven. Het grootste priemgetal dat we nu kennen is $2^{82\space589\space933} − 1$. Dit is het 51e Mersenne-priemgetal, gevonden in december 2018, ook door GIMPS.
-
 :::
 
 Bij de asymmetrische cryptosystemen waar we in hoofdstuk 6 naar gaan kijken speelt de getaltheorie uit hoofdstuk 5 een belangrijke rol. Daarbij kijken we eerst naar delers en priemgetallen. Een eenvoudige manier om priemgetallen te vinden is aan de hand van de Zeef van Eratosthenes (Griekse geleerde).
@@ -158,9 +156,43 @@ De Eulerindicator, die het aantal getallen $a$ aangeeft zodat $0 \le a \le m-1$ 
 
 De stelling van Euler en de kleine stelling van Fermat kunnen helpen om grote machten efficiënter module $m$ te reduceren. Onder andere deze stellingen worden in hoofdstuk 7 'bewezen'. Mocht je geïnteresseerd zijn in de bewijzen van deze stellingen -- waar mooie wiskunde achter zit -- dan kun je je verder verdiepen in de theorie en opgaven van hoofdstuk 7.
 
-*Maak van paragraaf 5.7 opgaven 62, 63, 64 en 65.*
+*Maak van paragraaf 5.7 opgaven 62, 63, 64 en 65 op pagina 44 en 45.*
 
 Oefeningen waarin encryptiefuncties met module rekenen terugkomen en welke handig zijn om te oefenen zijn 62, 63, 64 en 65. Hierin zijn de laatste twee wat uitdagender, gezien in deze opdrachten de inverse weer terugkomt.
+
+## Asymmetrische cryptografie
+
+*Bestudeer uit de syllabus paragraaf 6.1 op pagina 48 en 49.*
+
+Bij asymmetrische cryptografie -- ook wel public key cryptografie genoemd -- wordt gewerkt met sleutelparen bestaande uit een privé-sleutel en een publieke sleutel. Hierbij wordt de privé-sleutel geheim gehouden door de gebruiker en de publieke sleutel wordt bekend gemaakt. Zo hoeven geen sleutels uitgewisseld te worden tussen gebruikers, hetgeen een voordeel is ten opzichte van symmetrische cryptografie.
+
+Een asymmetrisch cryptosysteem berust op een algoritme welke eenvoudig uit te voeren is, maar waarvan het inverse algoritme zeer moeilijk uit te voeren is (ook wel een 'trapdoor one-way algoritme' genoemd), tenzij extra informatie over de privé-sleutel bekend is. Een nadeel hiervan is dat zo'n algoritme vaak meer rekentijd kost.
+
+In de algoritmes voor asymmetrische cryptografie die we in dit hoofdstuk verder gaan bekijken komt de wiskunde terug die in hoofdstuk 5 aan bod is gekomen.
+
+### Diffie-Hellman sleutelprotocol
+
+*Bestudeer uit de syllabus paragraaf 6.2 op pagina 49 t/m 53 en maak opgaven 3 en 8. Maak eventueel de opgaven 9, 10 en 11.*
+
+:::{note}
+In het voorbeeld na opgave 2 staat een foutje: Alice stuurt Bob natuurlijk de combinatie $(p,\bar g,\bar A)$. Die combinatie is haar publieke sleutel.
+:::
+
+Het Diffie-Hellman sleutelprotocol is een sleuteluitwisselingsprotocol ontworpen door Whitfield Diffie en Martin Hellman die ervoor zorgt dat gebruikers op een veilige manier een sleutel kunnen afspreken. Dit kan dan bijvoorbeeld weer worden gebruikt om met behulp van een symmetrisch cryptosysteem boodschappen te vercijferen met de afgesproken sleutel vanuit Diffie-Hellman. Het algoritme is op bladzijde 50 uitgewerkt inclusief een voorbeeld. Restklassen en modulorekenen met machten in $\mathbb{Z}_p$ komt hier terug. Het algoritme is gebaseerd op het Diffie-Hellman-completeringsprobleem: het is ondoenlijk om bij de getallen $\bar g$, $\bar g^a$ en $\bar g^b$ in $\mathbb{Z}_p$ de restklasse $\bar g^{a\cdot b}$ in $\mathbb{Z}_p$ te vinden. Hierbij gaan we ervan uit dat gewerkt wordt met grote getallen.
+
+Je komt er in de facultatieve opgaven 9, 10 en 11 achter dat niet iedere restklasse in $\mathbb{Z}_p$ even geschikt is om als $\bar g$ gebruikt te worden.
+
+### RSA en digitale handtekeningen
+
+*Bestudeer uit de syllabus paragraaf 6.3 en 6.4 op pagina 53 t/m 56 en maak opgaven 14, 15, 16, 17 en 18.*
+
+RSA is een veelgebruikt asymmetrisch cryptosysteem ontworpen door Ron Rivest, Adi Shamir en Leonard Adleman (vandaar de naam RSA). Het RSA-algoritme wordt gebruikt om berichten op een veilige manier te vercijferen en te ontcijferen, waarbij iedere gebruiker een publieke en geheime sleutel kiest aan de hand van het gegeven algoritme op bladzijde 53. Op bladzijde 54 is een voorbeeld van dit algoritme uitgewerkt met kleine getallen. Het algoritme is gebaseerd op het volgende wiskundige probleem: wanneer gegeven het getal $m$, dan is het ondoenlijk om binnen afzienbare tijd de ontbinding $p\cdot q = m$ te vinden. Hierbij gaan we er weer vanuit dat gewerkt wordt met grote getallen.
+
+Een te vercijferen bericht zet je eerst om naar getallen, bijvoorbeeld met de ASCII-tabel. Vervolgens worden deze codes achter elkaar gezet, opgesplitst in blokken van bepaalde lengte en vercijferd. Gezien de hoeveelheid rekentijd van het RSA-algoritme wordt RSA vaak gebruikt voor het versturen van een sleutel van een symmetrisch cryptosysteem.
+
+Met behulp van RSA kan worden achterhaald of de afzender van een boodschap ook inderdaad is wie hij zegt dat hij is. Een voorbeeld waarin dit van belang is, is bij het overschrijven van geld naar een bepaalde rekening bij een bank. De opdrachtgever kan met behulp van een digitale handtekening aangeven dat hij gemachtigd is. Zo'n digitale handtekening kan gemaakt worden met behulp van RSA. Door per gebruiker een geheime en publieke sleutel te kiezen, kan iedere gebruiker een eigen digitale handtekening maken en versturen aan een andere gebruiker. De andere gebruiker kan vervolgens controleren of de handtekening inderdaad door deze persoon gemaakt is. Andere toepassingen van RSA naast digitale certificaten en handtekeningen zijn bijvoorbeeld te vinden in de authenticatie en beveiliging van informatie.
+
+*Het bestuderen en maken van de opgaven van hoofdstuk 7, waarin de bewijzen van verschillende rekenregels en stellingen uit de syllabus terugkomen, is facultatief.*
 
 ## Uitwerkingen
 
