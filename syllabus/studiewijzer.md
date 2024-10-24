@@ -61,7 +61,10 @@ In de eerste zin van &sect;3.3 wordt gesuggereerd dat een monoalfabetische subst
 *Bestudeer uit de syllabus paragraaf 5.1 en 5.2 op pagina 23 t/m 28 en maak opgaven 5, 9 en 16.*
 
 :::{note}
-De syllabus is al een tijdje geleden geschreven. Het grootste priemgetal dat we nu kennen is $2^{82\space589\space933} − 1$. Dit is het 51e Mersenne-priemgetal, gevonden in december 2018, ook door GIMPS.
+De syllabus is al een tijdje geleden geschreven. Het grootste priemgetal dat we nu kennen is $2^{136\space279\space841} − 1$, een getal met ruim 41 miljoen cijfers. Dit is het 52e Mersenne-priemgetal, gevonden in oktober 2024 door GIMPS.[^mersenne-52] Het 51e Mersenne-priemgetal, het vorige bekende grootste priemgetal, is $2^{82\space589\space933} − 1$. Dit getal was gevonden in december 2018.[^mersenne-51]
+
+[^mersenne-52]: Zie het [persbericht hier](https://www.mersenne.org/primes/?press=M136279841). Je kunt het getal overigens downloaden in [een .zip-bestand](https://www.mersenne.org/primes/digits/M136279841.zip).
+[^mersenne-51]: Zie het [persbericht](https://www.mersenne.org/primes/?press=M82589933).
 :::
 
 Bij de asymmetrische cryptosystemen waar we in hoofdstuk 6 naar gaan kijken speelt de getaltheorie uit hoofdstuk 5 een belangrijke rol. Daarbij kijken we eerst naar delers en priemgetallen. Een eenvoudige manier om priemgetallen te vinden is aan de hand van de Zeef van Eratosthenes (Griekse geleerde).
