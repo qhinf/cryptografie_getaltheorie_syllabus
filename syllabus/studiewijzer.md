@@ -8,11 +8,79 @@ In deze studiewijzer verwijzen we naar hoofdstukken en opgaven uit [deze syllabu
 
 *Bestudeer uit de syllabus hoofdstuk 2 op pagina 6 t/m 8. Maak opgave 1.*
 
+:::{admonition} Python
+:class: important
+
+Bij deze module ga je ook aan de slag met Python. Als je nog geen Python op je computer hebt, dan kun je [Thonny](https://thonny.org/) installeren: dat gaat relatief eenvoudig en je krijgt er meteen een goede editor bij om je Python code in te schrijven. Ga naar de [website van Thonny](https://thonny.org/) en download rechtsboven de juiste versie voor jouw besturingssysteem.
+
+Kun je even geen programma's installeren? In de [Console van CSCircles](https://cscircles.cemc.uwaterloo.ca/console/) kun je ook snel met Python aan de slag. Maar let op: de code die je hier schrijft wordt nergens opgeslagen! Gebruik het dus alleen om snel iets uit te proberen, en niet om de eindopdracht in te maken.
+
+Hieronder een paar basisregels Python. De volgende regel zet bijvoorbeeld een stuk tekst op het scherm:
+
+```python
+print("Hallo, wereld!")
+```
+
+Het commando van deze regel is `print` en de tekst die geprint wordt zetten we tussen aanhalingstekens. We kunnen ook waardes opslaan in een variabele:
+
+```python
+letter = 'a'
+```
+
+Hier slaan we bijvoorbeeld de waarde `'a'` op in een variabele genaamd `letter`. In plaats van de waarde kunnen we nu die variabele meegeven om te printen:
+
+```python
+print(letter)
+```
+
+Soms is het ook handig om input te vragen, zodat we niet steeds de code aanpassen als we bijvoorbeeld een andere letter willen hebben:
+
+```python
+letter = input("Voer een letter in: ")
+```
+
+We geven het commando `input` met de tekst die we printen om de gebruiker om input te vragen. HEt resultaat van die vraag slaan we dan op in de variabele `letter`.
+
+:::
+
 ## Symmetrische cryptografie
 
 *Bestudeer uit de syllabus van hoofdstuk 3 pagina 9 t/m 11 en maak opgaven 2, 3 en eventueel 4.*
 
-Symmetrische cryptosystemen zijn gebaseerd op het versleutelen en ontcijferen met behulp van dezelfde sleutel. Een voorbeeld van een symmetrisch cryptosysteem is het schuifsysteem waarbij de encryptiefunctie van de vorm $E_k(x) = x + k$ is. De versleuteling met behulp van deze encryptiefuncties levert niet veel op als het gaat om geheimhouding van de boodschap. Dus daar moet een tandje bij. Bij de encryptiefunctie $E_k(x) = x + k$ maken we alleen gebruik van optellen. We gaan nu ook een vermenigvuldiging toevoegen. Dit is niet nieuw voor je, want bij de lineaire functie $f(x) = ax + b$ voer je ook een vermenigvuldiging en een optelling uit. Onze encryptiefunctie krijgt ook deze vorm. Bij de notatie moeten we uiteraard $a$ en $b$ aangeven en dat doen we weer in een subscript, in het algemeen: $E_{(a,b)}(x) = ax + b$.
+Symmetrische cryptosystemen zijn gebaseerd op het versleutelen en ontcijferen met behulp van dezelfde sleutel. Een voorbeeld van een symmetrisch cryptosysteem is het schuifsysteem waarbij de encryptiefunctie van de vorm $E_k(x) = x + k$ is.
+
+:::{admonition} Python
+:class: important
+
+In Python kunnen we een encryptiefunctie bijvoorbeeld zo definiëren:
+
+```python
+def versleutel(letter):
+   versleuteld = ord(letter) + 5
+   return versleuteld
+```
+
+Dit komt overeen met $E_5(x) = x + 5$. Generieker zouden we de functie zo kunnen schrijven, zodat we niet steeds de code hoeven te veranderen voor een nieuwe sleutel:
+
+```python
+def versleutel(k, letter):
+    versleuteld = ord(letter) + k
+    return versleuteld
+```
+
+De functie `ord` gebruiken we om een letter om te zetten naar een getal, zodat we ermee kunnen rekenen.
+
+Om een heel bericht te versleutelen, kunnen we gebruik maken van een for-loop:
+
+```python
+tekst = input("Typ je bericht: ")
+for letter in tekst:
+    print(versleutel(5, letter))
+```
+
+:::
+
+De versleuteling met behulp van deze encryptiefuncties levert niet veel op als het gaat om geheimhouding van de boodschap. Dus daar moet een tandje bij. Bij de encryptiefunctie $E_k(x) = x + k$ maken we alleen gebruik van optellen. We gaan nu ook een vermenigvuldiging toevoegen. Dit is niet nieuw voor je, want bij de lineaire functie $f(x) = ax + b$ voer je ook een vermenigvuldiging en een optelling uit. Onze encryptiefunctie krijgt ook deze vorm. Bij de notatie moeten we uiteraard $a$ en $b$ aangeven en dat doen we weer in een subscript, in het algemeen: $E_{(a,b)}(x) = ax + b$.
 
 :::{admonition} Voorbeeld
 :class: hint
@@ -42,6 +110,31 @@ Bereken $E_{(2,12)}(0)$ en $E_{(2,12)}(13)$ en leg uit welk probleem we krijgen 
 
 :::
 
+
+:::{admonition} Python
+:class: important
+
+De decryptiefunctie die bij de encryptiefunctie $E_k$ hoort ziet er in Python als volgt uit:
+
+```python
+def ontsleutel(k, versleuteld):
+    return chr(versleuteld - k)
+```
+
+Dit is het omgekeerde van de functie `versleutel`: we trekken eerst `k` van de input af en gebruiken daarna de `chr` functie om het getal terug te zetten naar een letter.
+
+We kunnen nu een while-loop maken die herhaaldelijk om input vraagt, zodat we makkelijk een bericht kunnen ontsleutelen:
+
+```python
+while True:
+    versleuteld = int(input("Versleuteld getal: "))
+    print(ontsleutel(versleuteld))
+```
+
+Bij de input gebruiken we hier `int`, om ervoor te zorgen dat Python de ingevoerde tekst als een getal behandelt.
+
+:::
+
 *Bestudeer uit de syllabus paragraaf 3.3 en 3.4 en maak opgaven 18, 19 en 23.*
 
 :::{note}
@@ -53,6 +146,16 @@ In de eerste zin van &sect;3.3 wordt gesuggereerd dat een monoalfabetische subst
 ## Coderen
 
 *Bestudeer uit de syllabus hoofdstuk 4 op pagina 21 en 22 en maak opgaven 2 en 3.*
+
+:::{admonition} Python
+:class: important
+
+In Python is het heel eenvoudig werken met ASCII:
+
+- de functie `ord` geeft de ASCII-waarde van een letter, en
+- de functie `chr` geeft een letter op basis van de ASCII-waarde.
+
+:::
 
 ## Getaltheorie
 
