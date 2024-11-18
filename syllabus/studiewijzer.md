@@ -236,6 +236,62 @@ Dus $78 \cdot 77 \cdot 76 = -3 \cdot -4 \cdot -5 = -60 = 21$. Klaar!
 3. Bereken op een handige manier $7^{11}$ in $\mathbb{Z}_{50}$.
 :::
 
+:::{admonition} Python
+:class: important
+
+In Python gebruiken we voor modulorekenen de `%`-operator. `27 % 12` geeft bijvoorbeeld 3 als resultaat.
+
+Met de modulo kunnen we bijvoorbeeld een functie schrijven die ons laten weten of een getal even is, want alle even getallen hebben in $\mathbb{Z}_2$ het getal 0 als representant (en alle oneven getallen het getal 1). We kunnen dus kijken of een getal modulo 2 gelijk is aan 0 om te zien of het even is:
+
+```python
+def iseven(getal):
+    if getal % 2 == 0:
+        return True
+    else:
+        return False
+```
+
+Dit kunnen we ook korter schrijven als:
+
+```python
+def iseven(getal):
+    return getal % 2 == 0
+```
+
+Meer in het algemeen kunnen we ook een functie maken die kijkt of een getal een deler is van een ander getal:
+
+```python
+def isdeler(deler, getal):
+    return getal % deler == 0
+```
+
+Daar kunnen we een leuk spelletje mee maken! De computer bedenkt een willekeurig getal en het is aan de speler om zoveel mogelijk delers van dat getal te noemen. Een willekeurig getal bedenken is vrij eenvoudig:
+
+```python
+import random
+getal = random.randint(100, 1000)
+```
+
+Vervolgens vragen we de gebruiker om een deler
+
+```python
+antwoord = int(input("Geef een deler " + str(getal) + ": "))
+```
+
+Hier moeten we eerst het getal omzetten naar een string (stuk tekst), omdat je niet tekst bij een getal kunt optellen. De input die als tekst binnenkomt willen we juist als een getal hebben, dus die zetten we om met `int()`. Zolang de speler getallen invoert die een deler zijn, gaat het spel door. Daarvoor gebruiken we een `while`-loop:
+
+```python
+while isdeler(antwoord, getal):
+    print("Gefeliciteerd!")
+    antwoord = int(input("Geef nog een deler " + str(getal) + ": "))
+
+print("Game over.")
+```
+
+Als het antwoord een deler is van het getal, dan print het programma "Gefeliciteerd!" en vraagt het nogmaals om een deler. Dan start de loop opnieuw met een check. Als het antwoord dan geen deler is, gaan we door met de laatste regel en is het game over.
+
+:::
+
 ### Inverse en het uitgebreide algoritme van Euclides
 
 *Bestudeer uit de syllabus paragraaf 5.4 en 5.5 op pagina 33 t/m 40 en maak opgaven 34, 43, 46 en 48. Meer oefening nodig? Maak dan ook opgaven 44, 45 en 47.*
